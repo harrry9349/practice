@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>履歴</title>
+    </head>
+    <body>       
+        <div id="leap-year">
+            <h1 id="title">うるう年判定</h1>
+            <div>
+                <input type="text" name="year" size="4" v-model.number="year">
+                <button type="button" name ="judge" @click="IsLeapYear">判定</button>
+            </div>
+            <div v-if="isleap == 'true'">
+               <p>その年はうるう年です。</p>
+            </div>
+            <div v-else-if="isleap == 'false'">
+                <p>その年はうるう年ではありません。</p>
+            </div>
+            <div v-else id="leap-year">
+                <p>ここに判定結果が表示されます。</p>
+            </div>
+        </div>
+        <script>
+        const leap = new Vue({     
+            el: '#leap-year',  
+            data: {
+                year: '',
+                isleap: ''
+            },
+            methods: {
+                IsLeapYear() {
+                    if(this.year % 4 == 0 && 
+                       this.year % 100 != 0){
+                        console.log(this.year)
+                        console.log("a")
+                        this.isleap = "true";
+                    }
+                    else if(this.year % 400 == 0){
+                        console.log(this.year)
+                        console.log("b")
+                        this.isleap = "true";
+                    }
+                    else{
+                        console.log(this.year)
+                        console.log("c")
+                        this.isleap = "false";
+                    }
+                    
+                    if(this.year == ''){
+                        console.log("null")
+                        this.isleap = ""
+                    }
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
