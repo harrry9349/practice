@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"time"
 )
 
@@ -26,7 +25,6 @@ func binary_search(box [100]int, target int, low int, high int) int {
 }
 
 func main() {
-	rand.Seed(time.Now().Unix())
 	start := time.Now()
 
 	box := [100]int{}
@@ -39,9 +37,6 @@ func main() {
 			fmt.Print(",")
 		}
 	}
-
-	//target := rand.Intn(100)
-	//fmt.Printf("検索する数値：%d\n", target)
 
 	res := -1
 	for n := 0; n < 100; n++ {
