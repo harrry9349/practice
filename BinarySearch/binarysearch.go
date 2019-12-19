@@ -19,6 +19,7 @@ func binary_search(box [100]int, target int, low int, high int) int {
 			fmt.Printf("%dは中央値%dより大きいので、%dから%dまでの範囲で再帰します\n", target, mid, mid+1, high)
 			return binary_search(box, target, mid+1, high)
 		} else {
+			fmt.Printf("%dは中央値%dと等しいので、バイナリサーチを終了します\n", target, mid)
 			return mid
 		}
 	}
