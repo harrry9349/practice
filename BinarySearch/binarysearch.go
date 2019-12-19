@@ -39,7 +39,7 @@ func main() {
 	}
 
 	res := -1
-	for n := 0; n < 100; n++ {
+	for n := 0; n <= 100; n++ {
 		target := n
 		fmt.Printf("検索する数値：%d\n", target)
 		res = binary_search(box, target, 0, 99)
