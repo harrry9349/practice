@@ -8,6 +8,7 @@ import (
 func binary_search(box [100]int, target int, low int, high int) int {
 	var mid int
 	if high < low {
+		fmt.Printf("下限値%dが上限値%dより大きくなったので、バイナリサーチを終了します\n", low, high)
 		return -1
 	} else {
 		mid = (low + high) / 2
