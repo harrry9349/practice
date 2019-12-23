@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>割引</title>
+    </head>
+    <body>       
+        <div id="wari-biki">
+            <h1 id="title">割引問題</h1>
+            <h4 id="setsumei">n円の商品を1個買うたびにp%割引される場合において、1円以下で買えるようになるまでいくら必要か求める</h4>
+            <div>
+                <input type="text" name="prize" size="8" v-model.number="new_prize">円
+                <input type="text" name="waribiki" size="4" v-model.number="new_waribiki">％
+                <button type="button" name ="judge" @click="TotalCash">計算</button>
+            </div>
+            <div v-if="prize != ''">
+               <p>{{ prize }} 円の商品を1個買うたびに {{ waribiki }} ％割引される場合、1円以下で買えるようになるまで {{ kosu }} 個購入し、合計金額は{{ total }}円です。</p>               </p>
+            </div>
+            <div v-else id="wari-biki">
+                <p>ここに計算結果が表示されます。</p>
+            </div>
+        </div>
+        <script>
+        const leap = new Vue({     
+            el: '#wari-biki',  
+            data: {
+                prize: '',
+                new_prize: '',
+                waribiki: '',
+                new_waribiki: '',
+                kosu: '',
+                total: ''
+            },
+            methods: {
+                TotalCash() {
+                    let calc_prize = 0;
+                    let calc_total = 0;
+                    let calc_kosu = 0;
+
+                    this.prize = this.new_prize;
+                    this.waribiki = this.new_waribiki;
+                    console.log("wari");
+
+                    calc_prize = this.prize;
+                    console.log("pri");
+
+                    while(calc_prize > 1){
+                        console.log(calc_prize);
+                        calc_total += calc_prize;
+                        calc_prize = parseInt(calc_prize / 100 * (100-this.waribiki));
+                        calc_kosu++
+                    }
+
+                    this.total = calc_total;
+                    this.kosu = calc_kosu;
+
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
