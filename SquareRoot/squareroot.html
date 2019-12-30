@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>平方根</title>
+    </head>
+    <body>       
+        <div id="square-root">
+            <h1 id="title">平方根の算出</h1>
+            <h4 id="setsumei">整数nの平方根を求める</h4>
+            <div>
+                <input type="text" name="prize" size="8" v-model.number="new_square">
+                <button type="button" name ="judge" @click="CalcRoot">計算</button>
+            </div>
+            <div v-if="square != ''">
+               <p>{{ square }} の平方根は {{ root }} です。</p> 
+            </div>>
+            <div v-else id="square-root">
+                <p>ここに計算結果が表示されます。</p>
+            </div>
+        </div>
+        <script>
+        const leap = new Vue({     
+            el: '#square-root',  
+            data: {
+                square: '',
+                new_square: '',
+                root: ''
+            },
+            methods: {
+                CalcRoot() {
+                    let calc_square = 0.00;
+                    let calc_square_last = 0.00;
+
+                    this.square = this.new_square;
+                    calc_square = this.new_square;
+                    if(calc_square <= 0){
+                        console.log("INVALID");
+                        this.root = '求められない';
+                    }
+                    else{
+                    // 整数Nの平方根は、数列X_mについて、X_m+1 = (X_m + N / X_m) / 2で近似できる
+                    // X_m+1とX_mが等しくなるまで実行する
+                        while(calc_square != calc_square_last){
+                            console.log("calculating");
+                            
+                           // 判定の為にX_mの値を保存
+                            calc_square_last = calc_square;
+                            
+                           // X_m+1を計算。その後while文の中で比較し等しければループを抜ける
+                            calc_square = (calc_square + this.new_square / calc_square) / 2
+
+                        }
+                        console.log("calculating was over");
+                        this.root = calc_square;
+                    }
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
