@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>合計と平均</title>
+    </head>
+    <body>       
+        <div id="sum-ave">
+            <h1 id="title">合計と平均の算出</h1>
+            <h4 id="setsumei">入力された7つの値の合計と平均を求める</h4>
+            <div>
+                <input type="text" name="prize" size="8" v-model.number="nums.num1">
+                <input type="text" name="prize" size="8" v-model.number="nums.num2">
+                <input type="text" name="prize" size="8" v-model.number="nums.num3">
+                <input type="text" name="prize" size="8" v-model.number="nums.num4">
+                <input type="text" name="prize" size="8" v-model.number="nums.num5">
+                <input type="text" name="prize" size="8" v-model.number="nums.num6">
+                <input type="text" name="prize" size="8" v-model.number="nums.num7">
+                <button type="button" name ="judge" @click="CalcSumAve">計算</button>
+            </div>
+            <div v-if="sum != ''">
+               <p>合計は{{ sum }} </br> 平均は {{ average }} です。</p> 
+            </div>>
+            <div v-else id="sum-ave">
+                <p>ここに計算結果が表示されます。</p>
+            </div>
+        </div>
+        <script>
+        const leap = new Vue({     
+            el: '#sum-ave',  
+            data: {
+                nums: [ {num1: ''},
+                        {num2: ''},
+                        {num3: ''},
+                        {num4: ''},
+                        {num5: ''},
+                        {num6: ''},
+                        {num7: ''}
+                    ],
+                sum: '',
+                average: ''
+            },
+            methods: {
+                CalcSumAve() {
+                    const calc_nums = new Array(this.nums.num1,
+                                                this.nums.num2,
+                                                this.nums.num3,
+                                                this.nums.num4,
+                                                this.nums.num5,
+                                                this.nums.num6,
+                                                this.nums.num7);
+                    let calc_sum = 0;
+                    let calc_ave = 0;
+                    
+                    for(let i=0; i < calc_nums.length; i++){
+                        calc_sum += calc_nums[i];
+                    }
+
+                    calc_ave = calc_sum / calc_nums.length;
+
+                    this.sum = calc_sum;
+                    this.average = calc_ave;
+
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
