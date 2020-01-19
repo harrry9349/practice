@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>選択ソート</title>
+    </head>
+    <body>       
+        <div id="selection-sort">
+            <h1 id="title">選択ソートの実行<h1>
+            <h4 id="setsumei">n個の配列を選択ソートする</h4>
+            <div>
+                個数<input type="text" name="prize" size="8" v-model.number="len"></br>
+                上限<input type="text" name="prize" size="8" v-model.number="max"></br>
+                下限<input type="text" name="prize" size="8" v-model.number="min">
+                <button type="button" name ="judge" @click="SelectionSort">計算</button>
+            </div>
+            <div v-if="len != ''">
+               <p>ソート前の配列　：　{{ list_before }} </br> ソート後の配列　：　{{ list_after }} </p> 
+            </div>>
+            <div v-else id="selection-sort">
+                <p>ここに計算結果が表示されます。</p>
+            </div>
+        </div>
+        <script>
+        const leap = new Vue({     
+            el: '#selection-sort',  
+            data: {
+                len: '',
+                max: '',
+                min: '',
+                list_before: [],
+                list_after: []
+            },
+            methods: {
+                SelectionSort() {
+
+                    // 「下限」から「上限」までのランダムな値が「個数」個入った配列を作成する
+                    let nums = new Array()
+                    for(let i = 0; i < this.len; i++){
+                        nums[i] = parseInt(Math.random() * (this.max - this.min) + this.min)
+                    }
+                    
+                    // ソート前の配列を保存する
+                    this.list_before = nums.slice()
+                    let tmp = 0
+                    // データ列中の最小値を探し、1番目の項と交換する。
+                    // 次に、2番目以降のデータ列から最小値を探し、2番目の項と交換する。
+                    // これを、データ列の最後まで繰り返す。
+                    for(let i=0; i < nums.length; i++){
+                        // 初項を基準とする
+                        let calc_min = nums[i]
+                        let lst_min = i
+                        for(let j = i; j < nums.length; j++){
+                            // 比較判定を行う
+                            if(nums[j] < calc_min){
+                                // ある項について基準より小さい場合、基準をその項の値に更新する
+                                // これをデータ列の最後まで繰り返して最小値を求める
+                                calc_min = nums[j]
+                                lst_min = j
+                            }
+                        }
+                        // n番目の項と最小値のある項を交換する
+                        tmp = nums[i]
+                        nums[i] = calc_min
+                        nums[lst_min] = tmp
+                    }
+
+                    // ソート後の配列を保存する
+                    this.list_after = nums.slice();
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
