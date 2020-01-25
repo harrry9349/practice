@@ -25,6 +25,9 @@ func (s Student) ShowMin() {
 	fmt.Printf("点数が最も低かった生徒は番号%d、名前%sで、点数は%dです。\n", s.Num, s.Name, s.Point)
 }
 
+//Student構造体スライスの定義
+type Test []Student
+
 // ランダム文字列を生成する関数
 func CreateName(n int) string {
 	var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -40,9 +43,8 @@ func main() {
 	rand.Seed(time.Now().Unix())
 	start := time.Now()
 
-	// Result構造体の設定
-	//var res Result
-	res := make([]Student, 0)
+	// Test構造体の宣言
+	res := make(Test, 0)
 
 	// 100人の名前と0~100のランダム値をResultスライスに格納する
 	for n := 0; n < 100; n++ {
@@ -51,8 +53,8 @@ func main() {
 	}
 
 	//最大値を取得する
-	// Student構造体をポインタ型で定義する
 	fmt.Println("最大値")
+	//最大値のためのStudent構造体を作成
 	max := res[0]
 	// 1番目から終点まで比較をとる
 	for n := 0; n < len(res); n++ {
