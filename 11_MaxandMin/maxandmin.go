@@ -43,10 +43,10 @@ func main() {
 	rand.Seed(time.Now().Unix())
 	start := time.Now()
 
-	// Test構造体の宣言
+	// Testスライスの宣言
 	res := make(Test, 0)
 
-	// 100人の名前と0~100のランダム値をResultスライスに格納する
+	// 100人の名前と0~100のランダム値をTestスライスに格納する
 	for n := 0; n < 100; n++ {
 		res = append(res, Student{n + 1, CreateName(20), rand.Intn(101)})
 		fmt.Printf("番号： %d 名前：%s 点数：%d \n", res[n].Num, res[n].Name, res[n].Point)
