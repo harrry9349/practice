@@ -58,7 +58,7 @@ func main() {
 	max := res[0]
 	// 1番目から終点まで比較をとる
 	for n := 0; n < len(res); n++ {
-		// n番目の値が最大値より大きい場合
+		// n番目の値が現時点でのより大きい場合
 		if max.Point < res[n].Point {
 			//最大値を更新する
 			fmt.Printf("更新： 前番号：%d 前名前：%s 前点数：%d  後番号：%d 後名前：%s 後点数：%d \n", max.Num, max.Name, max.Point, res[n].Num, res[n].Name, res[n].Point)
@@ -71,7 +71,7 @@ func main() {
 	min := res[0]
 	// 1番目から終点まで比較をとる
 	for n := 0; n < len(res); n++ {
-		// n番目の値が最小値より小さい場合
+		// n番目の値が現時点での最小値より小さい場合
 		if min.Point > res[n].Point {
 			//最小値を更新する
 			fmt.Printf("更新： 前番号：%d 前名前：%s 前点数：%d  後番号：%d 後名前：%s 後点数：%d \n", min.Num, min.Name, min.Point, res[n].Num, res[n].Name, res[n].Point)
