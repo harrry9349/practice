@@ -95,16 +95,19 @@ func main() {
 	start := time.Now()
 
 	a := newList()
-	for i := 0; i < 4; i++ {
-		fmt.Println(a.insertList(i, i))
+	// リストの挿入
+	for n := 0; n < 100; n++ {
+		fmt.Println("Listの挿入：", a.insertList(n, rand.Intn(100)))
 	}
 	a.printList()
-	for i := 0; i < 5; i++ {
-		n, ok := a.searchList(i)
-		fmt.Println(n, ok)
+	// リストの検索
+	for n := 0; n < 100; n++ {
+		m, ok := a.searchList(n)
+		fmt.Println("Listの検索：", m, ok)
 	}
+	//リストの削除
 	for !a.isEmpty() {
-		a.deleteList(0)
+		fmt.Println("Listの削除：", a.deleteList(0))
 		a.printList()
 	}
 
