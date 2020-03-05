@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>スタック</title>
+    </head>
+    <body>       
+        <div id="stack-stack">
+            <h1 id="title">スタックの実践</h1>
+            <p>スタックA,Cは数字を5個格納できます。</p>
+            <p>PushでスタックBからA,CにPush,<br>
+                PopでスタックA,CからBにPopできます。</p>
+            <div>
+                <button type="button"  @click="init">初期化</button>
+                <p>スタックA　：　{{ stack_A }}</p>
+                <button type="button"  @click="push_A">A Push</button>
+                <button type="button"  @click="pop_A">A Pop</button>
+                <p>スタックB　：　{{ stack_B }}</p>
+                <p>スタックC　：　{{ stack_C }}</p>
+                <button type="button"  @click="push_C">C Push</button>
+                <button type="button"  @click="pop_C">C Pop</button>
+            </div>
+        </div>
+        <script src="js/stack.js"></script>
+
+    </body>
+</html>
