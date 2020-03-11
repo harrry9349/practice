@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>キュー</title>
+    </head>
+    <body>       
+        <div id="queue-queue">
+            <h1 id="title">キューの実践</h1>
+            <p>キューA,Cは数字を10個格納できます。</p>
+            <p>InQでキューBからA,CにInQ,<br>
+                DeQでキューA,CからBにDeQできます。</p>
+            <div>
+                <button type="button"  @click="init">初期化</button>
+                
+                <p>キューA　：　
+                    <button type="button"  @click="DeQ_A">A DeQ</button>
+                    {{ queue_A }}
+                    <button type="button"  @click="InQ_A">A InQ</button>
+                </p>
+                
+                
+                <p>キューB　：　{{ queue_B }}</p>
+                <p>キューC　：　
+                <button type="button"  @click="DeQ_C">C DeQ</button>
+                {{ queue_C }}
+                <button type="button"  @click="InQ_C">C InQ</button></p>
+            </div>
+        </div>
+        <script src="js/queue.js"></script>
+
+    </body>
+</html>
