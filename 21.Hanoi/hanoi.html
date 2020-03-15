@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>ハノイの塔</title>
+    </head>
+    <body>       
+        <div id="stack-stack">
+            <h1 id="title">ハノイの塔</h1>
+            <p>3本の杭と、大きさの異なる複数の円盤から構成される</p>
+            <p>最初はすべての数が左端の杭に小さい円盤が上になるように順に積み重ねられている<br>
+                円盤を一回に一枚ずつどれかの杭に移動させることができるが、<br>
+                小さな数の円盤の上に大きな円盤を移動させることはできない<br>
+                左端の円盤を全て右端に動かしたら終了</p>
+            <div>
+                円盤の数
+                <input type="text" name="prize" size="8" v-model.number="num">
+                <button type="button"  @click="init">実行</button>
+            </div>
+            <div v-if="history != ''">
+                <ul>
+                    <li v-for="message in messages" :key="message.id">{{ message }} </li>
+                </ul>
+             </div>
+             <div v-else id="stack-stack">
+                 <p>ここに数値の移動処理履歴が表示されます。</p>
+             </div>
+        </div>
+        <script src="js/hanoi.js"></script>
+
+    </body>
+</html>
