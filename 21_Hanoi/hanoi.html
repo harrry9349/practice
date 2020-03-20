@@ -18,7 +18,7 @@
                 <input type="text" name="prize" size="8" v-model.number="num">
                 <button type="button"  @click="init">実行</button>
             </div>
-            <div v-if="history != ''">
+            <div v-if="messages != ''">
                 <ul>
                     <li v-for="message in messages" :key="message.id">{{ message }} </li>
                 </ul>
