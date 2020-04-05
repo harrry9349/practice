@@ -8,7 +8,9 @@ import (
 
 func InsertionSort(slice []int) []int {
 
-	// 2番目から100番目を終点対象とする
+	// 2番目から最終番を終点対象とする
+	// 取り出した値を「整列済み配列」の適切な位置に挿入する
+	// 繰り返し全て「整列済み配列」に挿入し終われば完了
 	for n := 1; n < len(slice); n++ {
 		m := n
 		for m > 0 && slice[m-1] > slice[m] {
@@ -47,7 +49,7 @@ func main() {
 	//挿入ソートを実行する
 	slice2 := InsertionSort(slice)
 
-	//バブルソートされたスライスを再表示する
+	//挿入ソートされたスライスを再表示する
 	ShowSlice(slice2, 10)
 
 	// さらに100個の100~199のランダム値をスライスに格納する
@@ -62,7 +64,7 @@ func main() {
 	//挿入ソートを実行する
 	slice3 := InsertionSort(slice2)
 
-	//バブルソートされたスライスを再表示する
+	//挿入ソートされたスライスを再表示する
 	ShowSlice(slice3, 20)
 
 	end := time.Now()
