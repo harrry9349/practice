@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>クイックソート</title>
+    </head>
+    <body>       
+        <div id="quick-sort">
+            <h1 id="title">クイックソートの実行<h1>
+            <h4 id="setsumei">n個の配列をクイックソートする</h4>
+            <div>
+                個数<input type="text" name="prize" size="8" v-model.number="len"></br>
+                上限<input type="text" name="prize" size="8" v-model.number="max"></br>
+                下限<input type="text" name="prize" size="8" v-model.number="min">
+                <button type="button" name ="judge" @click="QuickSort()">計算</button>
+            </div>
+            <div v-if="len != ''">
+               <p>ソート前の配列　：　{{ list_before }} </br> ソート後の配列　：　{{ list_after }} <br>（デバッグ文はF12で確認）</p> 
+            </div>>
+            <div v-else id="quick-sort">
+                <p>ここに計算結果が表示されます。</p>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/quicksort.js"></script>
+        <script>
+
+        </script>
+    </body>
+</html>
